@@ -117,7 +117,7 @@ app.post('/new/children', (req, res) => {
 
 app.post('/new/user', (req, res) => {
     const params = req.body;
-    if (params.name && params.age && params.location) {
+    if (params.username && params.email && params.password) {
         User.findOne({ email: params.email }).exec((err, user) => {
             if (err) {
                 return res.status(500).json({ err: 'Ocurrio un error' });
@@ -176,7 +176,7 @@ app.get('/womans', (req, res) => {
         if (err) {
             return res.status(404).json({ message: 'Registro no encontrado' });
         } else {
-            return res.status(200).json({ users })
+            return res.status(200).json({ woman_register })
         }
     })
 });
@@ -186,7 +186,7 @@ app.get('/childrens', (req, res) => {
         if (err) {
             return res.status(404).json({ message: 'Registro no encontrado' });
         } else {
-            return res.status(200).json({ users })
+            return res.status(200).json({ children_register })
         }
     })
 });
@@ -194,11 +194,11 @@ app.get('/childrens', (req, res) => {
 
 
 app.get('/users', (req, res) => {
-    User.find().exec((err, users) => {
+    User.find().exec((err, user) => {
         if (err) {
             return res.status(404).json({ message: 'Usuarios no encontrados' });
         } else {
-            return res.status(200).json({ users })
+            return res.status(200).json({ user })
         }
     })
 });
