@@ -16,7 +16,7 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true }, (err) => {
 })
 
 const app = express();
-const PORT = 6000;
+const PORT = process.env.PORT || 6000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
